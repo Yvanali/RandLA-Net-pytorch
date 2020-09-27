@@ -10,7 +10,7 @@ import torch
 class SemanticKITTI(torch_data.Dataset):
     def __init__(self, mode, test_id=None):
         self.name = 'SemanticKITTI'
-        self.dataset_path = '/data/WQ/DataSet/semantic-kitti/dataset/sequences_0.06'
+        self.dataset_path = '/media/omnisky/dataset_disk/xuyan/SemanticKITTI/dataset/sequences_0.06'
         self.label_to_names = {0: 'unlabeled',
                                1: 'car',
                                2: 'bicycle',
