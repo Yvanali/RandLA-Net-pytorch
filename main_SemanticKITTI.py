@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--checkpoint_path', default='output/checkpoint.tar', help='Model checkpoint path [default: None]')
 parser.add_argument('--log_dir', default='output', help='Dump dir to save model checkpoint [default: log]')
 parser.add_argument('--max_epoch', type=int, default=400, help='Epoch to run [default: 180]')
-parser.add_argument('--batch_size', type=int, default=20, help='Batch Size during training [default: 8]')
+parser.add_argument('--batch_size', type=int, default=8, help='Batch Size during training [default: 8]')
 FLAGS = parser.parse_args()
 
 #################################################   log   #################################################
