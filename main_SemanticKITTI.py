@@ -68,7 +68,7 @@ if CHECKPOINT_PATH is not None and os.path.isfile(CHECKPOINT_PATH):
 
 
 if torch.cuda.device_count() > 1:
-    log_string("Let's use %d GPUs!" % (torch.cuda.device_count()))
+    log_string("Let's use %d GPUs!" % (torch.cuda.device_count()-3))
     # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
     net = nn.DataParallel(net)
 
