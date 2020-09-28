@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--checkpoint_path', default='output/checkpoint.tar', help='Model checkpoint path [default: None]')
 parser.add_argument('--log_dir', default='output', help='Dump dir to save model checkpoint [default: log]')
 parser.add_argument('--max_epoch', type=int, default=400, help='Epoch to run [default: 180]')
-parser.add_argument('--batch_size', type=int, default=8, help='Batch Size during training [default: 8]')
+parser.add_argument('--batch_size', type=int, default=4, help='Batch Size during training [default: 8]')
 FLAGS = parser.parse_args()
 
 #################################################   log   #################################################
@@ -46,7 +46,7 @@ print(len(TRAIN_DATALOADER), len(TEST_DATALOADER))
 
 
 #################################################   network   #################################################
-CUDA_VISIBLE_DEVICES=2,3
+CUDA_VISIBLE_DEVICES=2
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 net = Network(cfg)
@@ -72,8 +72,8 @@ if CHECKPOINT_PATH is not None and os.path.isfile(CHECKPOINT_PATH):
 #      # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
 #      net = nn.DataParallel(net)
 
-device_ids = [2, 3]
-net = torch.nn.DataParallel(net, device_ids=device_ids)
+# device_ids = [2, 3]
+# net = nn.DataParallel(net, device_ids=device_ids)
 
 
 
