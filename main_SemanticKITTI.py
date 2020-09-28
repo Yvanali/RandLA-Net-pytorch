@@ -67,11 +67,13 @@ if CHECKPOINT_PATH is not None and os.path.isfile(CHECKPOINT_PATH):
     log_string("-> loaded checkpoint %s (epoch: %d)"%(CHECKPOINT_PATH, start_epoch))
 
 
-if torch.cuda.device_count() > 1:
-     log_string("Let's use %d GPUs!" % (torch.cuda.device_count()))
-     # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
-     net = nn.DataParallel(net)
+# if torch.cuda.device_count() > 1:
+#      log_string("Let's use %d GPUs!" % (torch.cuda.device_count()))
+#      # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
+#      net = nn.DataParallel(net)
 
+device_ids = [2, 3]
+net = torch.nn.DataParallel(net, device_ids=device_ids)
 
 
 
